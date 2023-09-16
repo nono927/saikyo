@@ -1,45 +1,8 @@
-#include <algorithm>
-#include <cassert>
+#pragma once
+
 #include <string>
-#include <type_traits>
 
 using ll = long long;
-
-// x >= 2^k をみたす最大のkを返す．
-// x <= 0 のとき，-1を返す．
-int floor_log2(ll x) {
-    int ret = -1;
-    while (x > 0) {
-        ++ret;
-        x /= 2;
-    }
-    return ret;
-}
-
-// x <= 2^k をみたす最小のkを返す．
-int ceil_log2(ll x) {
-    int ret = 1;
-    while ((1 << ret) < x) {
-        ++ret;
-    }
-    return ret;
-}
-
-// a * b > th ならばtrueを返す．
-bool is_mul_more_than(ll a, ll b, ll th) {
-    return __int128_t(a) * __int128_t(b) > th;
-}
-
-// 10進法における各桁の和を返す．
-int digit_sum(ll x) {
-    assert(x >= 0);
-    int sum = 0;
-    while (x > 0) {
-        sum += x % 10;
-        x /= 10;
-    }
-    return sum;
-}
 
 // 非負整数xをn進数表記に変換する．
 // ただし，nは2以上10以下とする．
