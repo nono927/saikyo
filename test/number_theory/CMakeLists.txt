@@ -1,0 +1,15 @@
+add_executable(enumerate_divisors_test enumerate_divisors_test.cpp)
+target_link_libraries(enumerate_divisors_test GTest::gtest_main)
+gtest_discover_tests(enumerate_divisors_test)
+
+add_executable(factorial_test factorial_test.cpp)
+target_link_libraries(factorial_test GTest::gtest_main)
+gtest_discover_tests(factorial_test)
+
+add_executable(prime_factorization_test prime_factorization_test.cpp)
+target_link_libraries(prime_factorization_test GTest::gtest_main)
+gtest_discover_tests(prime_factorization_test)
+
+add_executable(sieve_test sieve_test.cpp)
+target_link_libraries(sieve_test GTest::gtest_main)
+gtest_discover_tests(sieve_test)
