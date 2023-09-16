@@ -1,0 +1,15 @@
+add_executable(cumulative_sum_test cumulative_sum_test.cpp)
+target_link_libraries(cumulative_sum_test GTest::gtest_main)
+gtest_discover_tests(cumulative_sum_test)
+
+add_executable(lexicographical_sort_test lexicographical_sort_test.cpp)
+target_link_libraries(lexicographical_sort_test GTest::gtest_main)
+gtest_discover_tests(lexicographical_sort_test)
+
+add_executable(longest_increasing_subsequence_test longest_increasing_subsequence_test.cpp)
+target_link_libraries(longest_increasing_subsequence_test GTest::gtest_main)
+gtest_discover_tests(longest_increasing_subsequence_test)
+
+add_executable(run_length_encoding run_length_encoding.cpp)
+target_link_libraries(run_length_encoding GTest::gtest_main)
+gtest_discover_tests(run_length_encoding)

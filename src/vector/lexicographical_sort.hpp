@@ -12,7 +12,7 @@ void lexicographical_sort(std::vector<T1>& v1, std::vector<T2>& v2) {
     }
     std::sort(v.begin(), v.end());
     for (size_t i = 0; i < v1.size(); ++i) {
-        tie(v1[i], v2[i]) = v[i];
+        std::tie(v1[i], v2[i]) = v[i];
     }
 }
 
@@ -27,7 +27,7 @@ void lexicographical_sort(std::vector<T1>& v1, std::vector<T2>& v2,
     }
     std::sort(v.begin(), v.end());
     for (size_t i = 0; i < v1.size(); ++i) {
-        tie(v1[i], v2[i], v3[i]) = v[i];
+        std::tie(v1[i], v2[i], v3[i]) = v[i];
     }
 }
 
