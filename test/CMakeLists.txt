@@ -20,6 +20,7 @@ include(GoogleTest)
 
 include_directories(../ac-library)
 include_directories(../src)
+add_subdirectory(data_structure)
 add_subdirectory(math_utils)
 add_subdirectory(number_theory)
 add_subdirectory(vector)
