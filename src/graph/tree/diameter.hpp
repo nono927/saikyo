@@ -1,6 +1,6 @@
 #include <tuple>
 
-#include "../dfs.hpp"
+#include "../search/dfs.hpp"
 
 // 木の直径を求める
 // Output: (直径，端点1，端点2)
@@ -11,7 +11,7 @@ std::tuple<int, Graph::node_t, Graph::node_t> tree_diameter(Graph& graph) {
     // sourceから最も遠い点を求める
     // Output: (最も遠い点，距離)
     auto find_farthest_node = [&](node_t source) -> std::tuple<node_t, int> {
-        auto [orders, parents] = dfs(graph, source);
+        auto [orders, parents] = dfs(graph, source, DfsType::PreOrder);
 
         std::vector<int> distances(graph.size());
         distances[source] = 0;

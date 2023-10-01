@@ -1,0 +1,11 @@
+add_executable(diameter_test diameter_test.cpp)
+target_link_libraries(diameter_test GTest::gtest_main)
+gtest_discover_tests(diameter_test)
+
+add_executable(euler_tour_test euler_tour_test.cpp)
+target_link_libraries(euler_tour_test GTest::gtest_main)
+gtest_discover_tests(euler_tour_test)
+
+add_executable(lowest_common_ancestor_test lowest_common_ancestor_test.cpp)
+target_link_libraries(lowest_common_ancestor_test GTest::gtest_main)
+gtest_discover_tests(lowest_common_ancestor_test)

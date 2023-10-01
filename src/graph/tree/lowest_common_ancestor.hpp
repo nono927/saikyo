@@ -1,7 +1,7 @@
 #include <utility>
 #include <vector>
 
-#include "../dfs.hpp"
+#include "../search/dfs.hpp"
 
 class LowestCommonAncestor {
     using node_t = Graph::node_t;
@@ -23,7 +23,7 @@ class LowestCommonAncestor {
                                                     std::vector<node_t>(nnode));
 
         // init parents
-        auto [order, parents] = dfs(graph, root);
+        auto [order, parents] = dfs(graph, root, DfsType::PreOrder);
         _parents[0] = parents;
         for (auto&& v : order) {
             for (int i = 0; i < ceil_log2_nnode - 1; ++i) {
@@ -46,7 +46,7 @@ class LowestCommonAncestor {
         }
     }
 
-    // 頂点vのk個先の祖先を返す
+    // 頂点vのk個先の祖先を返す．存在しない場合は-1を返す．
     node_t parent(node_t v, int k) {
         if (k >= (1 << ceil_log2_nnode)) {
             return -1;
@@ -57,6 +57,9 @@ class LowestCommonAncestor {
                 v = _parents[i][v];
             }
             k >>= 1;
+            if (v == -1) {
+                return -1;
+            }
             if (k == 0) {
                 break;
             }
