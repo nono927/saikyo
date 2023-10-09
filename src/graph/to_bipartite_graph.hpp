@@ -1,6 +1,6 @@
 #include <vector>
 
-#include "./dfs.hpp"
+#include "./search/dfs_all.hpp"
 #include "./graph.hpp"
 
 // 2部グラフの頂点に対してラベル付けを行う．
@@ -16,7 +16,7 @@
 // 依存先: dfs_all
 std::vector<int> to_bipartite_graph(Graph& graph) {
     const int n = graph.size();
-    auto [orders, parents] = dfs_all(graph);
+    auto [orders, parents] = dfs_all(graph, DfsType::PreOrder);
     std::vector<int> labels(n);
 
     int ncc = 0;

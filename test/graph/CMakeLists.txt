@@ -1,2 +1,10 @@
 add_subdirectory(search)
 add_subdirectory(tree)
+
+add_executable(to_bipartite_graph_test to_bipartite_graph_test.cpp)
+target_link_libraries(to_bipartite_graph_test GTest::gtest_main)
+gtest_discover_tests(to_bipartite_graph_test)
+
+add_executable(topological_sort_test topological_sort_test.cpp)
+target_link_libraries(topological_sort_test GTest::gtest_main)
+gtest_discover_tests(topological_sort_test)
