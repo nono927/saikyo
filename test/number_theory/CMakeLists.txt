@@ -2,6 +2,10 @@ add_executable(enumerate_divisors_test enumerate_divisors_test.cpp)
 target_link_libraries(enumerate_divisors_test GTest::gtest_main)
 gtest_discover_tests(enumerate_divisors_test)
 
+add_executable(extended_gcd_test extended_gcd_test.cpp)
+target_link_libraries(extended_gcd_test GTest::gtest_main)
+gtest_discover_tests(extended_gcd_test)
+
 add_executable(factorial_test factorial_test.cpp)
 target_link_libraries(factorial_test GTest::gtest_main)
 gtest_discover_tests(factorial_test)

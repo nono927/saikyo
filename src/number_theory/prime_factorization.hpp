@@ -10,7 +10,7 @@ using ll = long long;
 std::vector<std::pair<ll, int>> prime_factorization(ll n) {
     assert(n > 0);
     std::vector<std::pair<ll, int>> ret;
-    for (int p = 2; p * p <= n; ++p) {
+    for (ll p = 2; p * p <= n; ++p) {
         if (n % p != 0) {
             continue;
         }

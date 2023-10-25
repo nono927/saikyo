@@ -28,3 +28,9 @@ TEST(PrimeFactorizationTest, HighlyCompositeNumber) {
     std::vector<std::pair<ll, int>> expected = {{2, 3}, {3, 1}};
     EXPECT_EQ(actual, expected);
 }
+
+TEST(PrimeFactorizationTest, LargePrime) {
+    std::vector<std::pair<long long, int>> actual = prime_factorization(200560490131);
+    std::vector<std::pair<long long, int>> expected = {{200560490131, 1}};
+    EXPECT_EQ(actual, expected);
+}
