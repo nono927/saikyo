@@ -1,17 +1,62 @@
+#pragma once
+
 #include <algorithm>
 #include <vector>
 
 using ll = long long;
 
-// 入力vectorを座標圧縮する．
-// 圧縮後の要素がiであるとき，元の値は戻り値のi番目の要素である．
-std::vector<ll> coordinate_compression(std::vector<ll>& vec) {
-    std::vector<ll> decode(vec);
-    std::sort(decode.begin(), decode.end());
-    decode.erase(std::unique(decode.begin(), decode.end()), decode.end());
-    for (size_t i = 0; i < vec.size(); ++i) {
-        auto it = std::lower_bound(decode.begin(), decode.end(), vec[i]);
-        vec[i] = std::distance(decode.begin(), it);
+// 座標圧縮クラス
+class CoordinateCompression {
+   public:
+    CoordinateCompression(std::vector<ll> vec)
+        : _decode(_unique(std::move(vec))) {}
+
+    ll encode(ll x) {
+        auto it = std::lower_bound(_decode.begin(), _decode.end(), x);
+        assert(it != _decode.end());
+        assert(*it == x);
+        return it - _decode.begin();
     }
-    return decode;
-}
+
+    std::vector<ll> encode(const std::vector<ll>& vec) {
+        std::vector<ll> ret;
+        ret.reserve(vec.size());
+        for (auto&& x : vec) {
+            ret.emplace_back(encode(x));
+        }
+        return ret;
+    }
+
+    ll decode(ll x) {
+        assert(x >= 0 && x < (size_t)_decode.size());
+        return _decode[x];
+    }
+
+    std::vector<ll> decode(const std::vector<ll>& vec) {
+        std::vector<ll> ret;
+        ret.reserve(vec.size());
+        for (auto&& x : vec) {
+            ret.emplace_back(decode(x));
+        }
+        return ret;
+    }
+
+    // decode(i) <= x < decode(i + 1) をみたすiを求める．
+    // ただし，ここでは decode(-1) = -inf, decode(size) = +inf と考える．
+    ll bound(ll x) {
+        auto it = std::upper_bound(_decode.begin(), _decode.end(), x);
+        return it - _decode.begin() - 1;
+    }
+
+    int size() { return _decode.size(); }
+
+   private:
+    const std::vector<ll> _decode;
+
+    static std::vector<ll> _unique(std::vector<ll> vec) {
+        assert(!vec.empty());
+        std::sort(vec.begin(), vec.end());
+        vec.erase(std::unique(vec.begin(), vec.end()), vec.end());
+        return vec;
+    }
+};

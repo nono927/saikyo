@@ -1,0 +1,3 @@
+add_executable(coordinate_compression_test coordinate_compression_test.cpp)
+target_link_libraries(coordinate_compression_test GTest::gtest_main)
+gtest_discover_tests(coordinate_compression_test)
