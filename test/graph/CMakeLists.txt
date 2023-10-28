@@ -1,6 +1,10 @@
 add_subdirectory(search)
 add_subdirectory(tree)
 
+add_executable(connected_components_test connected_components_test.cpp)
+target_link_libraries(connected_components_test GTest::gtest_main)
+gtest_discover_tests(connected_components_test)
+
 add_executable(to_bipartite_graph_test to_bipartite_graph_test.cpp)
 target_link_libraries(to_bipartite_graph_test GTest::gtest_main)
 gtest_discover_tests(to_bipartite_graph_test)
