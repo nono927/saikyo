@@ -1,0 +1,3 @@
+add_executable(rolling_hash_test rolling_hash_test.cpp)
+target_link_libraries(rolling_hash_test GTest::gtest_main)
+gtest_discover_tests(rolling_hash_test)

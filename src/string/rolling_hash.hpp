@@ -1,3 +1,5 @@
+#pragma once
+
 #include <cassert>
 #include <random>
 #include <vector>
@@ -60,25 +62,29 @@ class RollingHash {
     }
 
    public:
-    RollingHash(std::string& s) {
+    // '\0'を含まない文字列sに対するRollingHashを生成する．
+    RollingHash(const std::string s) {
         extend_base_pows(s.size());
         auto b = base_pows[1];
         prefix_hash.reserve(s.size() + 1);
         prefix_hash.push_back(0UL);
         for (auto&& x : s) {
+            assert(x != '\0');
             auto h = prefix_hash.back();
             prefix_hash.push_back(
                 mod_hash(mul_hash(h, b) + static_cast<hash_t>(x)));
         }
     }
 
+    // 0を含まない数列vに対するRollingHashを生成する．
     template <class T>
-    RollingHash(std::vector<T>& v) {
+    RollingHash(const std::vector<T> v) {
         extend_base_pows(v.size());
         auto b = base_pows[1];
         prefix_hash.reserve(v.size() + 1);
         prefix_hash.push_back(0UL);
         for (auto&& x : v) {
+            assert(x != 0);
             auto h = prefix_hash.back();
             prefix_hash.push_back(
                 mod_hash(mul_hash(h, b) + static_cast<hash_t>(x)));
