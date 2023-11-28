@@ -1,3 +1,7 @@
+add_executable(binary_trie_test binary_trie_test.cpp)
+target_link_libraries(binary_trie_test GTest::gtest_main)
+gtest_discover_tests(binary_trie_test)
+
 add_executable(doubling_test doubling_test.cpp)
 target_link_libraries(doubling_test GTest::gtest_main)
 gtest_discover_tests(doubling_test)
