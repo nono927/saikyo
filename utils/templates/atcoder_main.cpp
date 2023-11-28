@@ -22,15 +22,22 @@ constexpr ll LL_INFTY = 1e18;
 #define EACH(e, x) for (auto&& e : x)
 #define EACHP(e1, e2, x) for (auto&& [e1, e2] : x)
 
-template <class T>
-std::vector<T> make_ndvector(T init, int n) {
-    return std::vector<T>(n, init);
+template <class T, size_t N>
+auto make_ndvector(const ll (&dims)[N], T init) {
+    if constexpr (N == 1) {
+        return std::vector(dims[0], init);
+    } else {
+        ll next_dims[N - 1] = {};
+        for (size_t i = 0; i < N - 1; ++i) {
+            next_dims[i] = dims[i + 1];
+        }
+        return std::vector(dims[0], make_ndvector<T, N - 1>(next_dims, init));
+    }
 }
 
-template <class T, class... Args>
-auto make_ndvector(T init, int n, Args... args) {
-    return std::vector<decltype(make_ndvector<T>(init, args...))>(
-        n, make_ndvector<T>(init, args...));
+template <class T, size_t N>
+auto make_ndvector(const ll (&dims)[N]) {
+    return make_ndvector(dims, T());
 }
 
 #ifdef LOCAL
