@@ -1,0 +1,15 @@
+add_executable(and_convolution_test and_convolution_test.cpp)
+target_link_libraries(and_convolution_test GTest::gtest_main)
+gtest_discover_tests(and_convolution_test)
+
+add_executable(or_convolution_test or_convolution_test.cpp)
+target_link_libraries(or_convolution_test GTest::gtest_main)
+gtest_discover_tests(or_convolution_test)
+
+add_executable(xor_convolution_test xor_convolution_test.cpp)
+target_link_libraries(xor_convolution_test GTest::gtest_main)
+gtest_discover_tests(xor_convolution_test)
+
+add_executable(zeta_mobius_transform_test zeta_mobius_transform_test.cpp)
+target_link_libraries(zeta_mobius_transform_test GTest::gtest_main)
+gtest_discover_tests(zeta_mobius_transform_test)
