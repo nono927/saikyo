@@ -5,6 +5,10 @@ add_executable(connected_components_test connected_components_test.cpp)
 target_link_libraries(connected_components_test GTest::gtest_main)
 gtest_discover_tests(connected_components_test)
 
+add_executable(minimum_spanning_tree_test minimum_spanning_tree_test.cpp)
+target_link_libraries(minimum_spanning_tree_test GTest::gtest_main)
+gtest_discover_tests(minimum_spanning_tree_test)
+
 add_executable(to_bipartite_graph_test to_bipartite_graph_test.cpp)
 target_link_libraries(to_bipartite_graph_test GTest::gtest_main)
 gtest_discover_tests(to_bipartite_graph_test)

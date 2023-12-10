@@ -4,7 +4,7 @@
 #include <tuple>
 #include <vector>
 
-#include "../weighted_graph.hpp"
+#include "./weighted_graph.hpp"
 
 // 無向グラフの最小全域木を求め，その重みを出力する．
 // 全域木が存在しない場合，無限を返す．
@@ -12,6 +12,11 @@ WeightedGraph::weight_t minimum_spanning_tree(const WeightedGraph& graph) {
     using weight_t = WeightedGraph::weight_t;
     using node_t = WeightedGraph::node_t;
     using Edge = std::tuple<weight_t, node_t, node_t>;
+    constexpr weight_t INFTY = std::numeric_limits<weight_t>::max() / 2;
+
+    if (graph.size() == 1) {
+        return static_cast<weight_t>(0);
+    }
 
     std::vector<Edge> edges;
     for (node_t u = 0; u < graph.size(); ++u) {
@@ -36,5 +41,5 @@ WeightedGraph::weight_t minimum_spanning_tree(const WeightedGraph& graph) {
         }
     }
 
-    return std::numeric_limits<weight_t>::max();
+    return INFTY;
 }
