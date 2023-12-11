@@ -1,0 +1,11 @@
+add_executable(general_test general_test.cpp)
+target_link_libraries(general_test GTest::gtest_main)
+gtest_discover_tests(general_test)
+
+add_executable(non_negative_test non_negative_test.cpp)
+target_link_libraries(non_negative_test GTest::gtest_main)
+gtest_discover_tests(non_negative_test)
+
+add_executable(unweighted_test unweighted_test.cpp)
+target_link_libraries(unweighted_test GTest::gtest_main)
+gtest_discover_tests(unweighted_test)

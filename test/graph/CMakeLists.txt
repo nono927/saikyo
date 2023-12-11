@@ -1,4 +1,5 @@
 add_subdirectory(search)
+add_subdirectory(shortest_path)
 add_subdirectory(tree)
 
 add_executable(connected_components_test connected_components_test.cpp)
