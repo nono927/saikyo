@@ -10,8 +10,13 @@ using VecBool = vector<bool>;
 using VecInt = vector<int>;
 using VecLL = vector<ll>;
 
-constexpr int INFTY = 1e9;
-constexpr ll LL_INFTY = 1e18;
+template <class T>
+using HeapMax = std::priority_queue<T, std::vector<T>, std::less<T>>;
+template <class T>
+using HeapMin = std::priority_queue<T, std::vector<T>, std::greater<T>>;
+
+constexpr int INFTY = std::numeric_limits<int>::max() / 2;
+constexpr ll LL_INFTY = std::numeric_limits<ll>::max() / 2;
 
 #define REP(i, n) for (ll i = 0; i < ll(n); ++i)
 #define REP3(i, m, n) for (ll i = (m); i < ll(n); ++i)
@@ -21,6 +26,16 @@ constexpr ll LL_INFTY = 1e18;
 #define ALL(x) (x).begin(), (x).end()
 #define EACH(e, x) for (auto&& e : x)
 #define EACHP(e1, e2, x) for (auto&& [e1, e2] : x)
+
+template <class T>
+bool chmax(T& a, const T& b) {
+    return (a < b) ? (a = b, true) : false;
+}
+
+template <class T>
+bool chmin(T& a, const T& b) {
+    return (a > b) ? (a = b, true) : false;
+}
 
 template <class T, size_t N>
 auto make_ndvector(const ll (&dims)[N], T init) {
@@ -39,6 +54,24 @@ template <class T, size_t N>
 auto make_ndvector(const ll (&dims)[N]) {
     return make_ndvector(dims, T());
 }
+
+template <std::integral T = ll>
+std::vector<T> make_iota(const ll n) {
+    std::vector<T> vec(n);
+    std::iota(vec.begin(), vec.end(), static_cast<T>(0));
+    return vec;
+}
+
+template <std::integral T = ll>
+std::vector<T> make_iota(const ll n, std::function<bool(T, T)>& comp) {
+    std::vector<T> vec = make_iota(n);
+    std::sort(vec.begin(), vec.end(), comp);
+    return vec;
+}
+
+void quit() { std::exit(EXIT_SUCCESS); }
+
+void print_yn(bool cond) { std::cout << (cond ? "Yes" : "No") << std::endl; }
 
 #ifdef LOCAL
 #include "local_debug.hpp"
