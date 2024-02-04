@@ -1,3 +1,6 @@
+#pragma once
+
+#include <cassert>
 #include <vector>
 
 using ll = long long;
