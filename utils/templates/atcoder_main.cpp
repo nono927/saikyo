@@ -9,6 +9,7 @@ using ll = long long;
 using VecBool = vector<bool>;
 using VecInt = vector<int>;
 using VecLL = vector<ll>;
+using Pll = pair<ll, ll>;
 
 template <class T>
 using HeapMax = std::priority_queue<T, std::vector<T>, std::less<T>>;
@@ -38,7 +39,7 @@ bool chmin(T& a, const T& b) {
 }
 
 template <class T, size_t N>
-auto make_ndvector(const ll (&dims)[N], T init) {
+auto make_ndvector(const ll (&dims)[N], T init = T()) {
     if constexpr (N == 1) {
         return std::vector(dims[0], init);
     } else {
@@ -50,21 +51,14 @@ auto make_ndvector(const ll (&dims)[N], T init) {
     }
 }
 
-template <class T, size_t N>
-auto make_ndvector(const ll (&dims)[N]) {
-    return make_ndvector(dims, T());
-}
-
-template <std::integral T = ll>
-std::vector<T> make_iota(const ll n) {
-    std::vector<T> vec(n);
-    std::iota(vec.begin(), vec.end(), static_cast<T>(0));
+std::vector<ll> make_iota(const ll n) {
+    std::vector<ll> vec(n);
+    std::iota(vec.begin(), vec.end(), 0LL);
     return vec;
 }
 
-template <std::integral T = ll>
-std::vector<T> make_iota(const ll n, std::function<bool(T, T)>& comp) {
-    std::vector<T> vec = make_iota(n);
+std::vector<ll> make_iota(const ll n, const std::function<bool(ll, ll)> comp) {
+    std::vector<ll> vec = make_iota(n);
     std::sort(vec.begin(), vec.end(), comp);
     return vec;
 }
@@ -80,7 +74,7 @@ void print_yn(bool cond) { std::cout << (cond ? "Yes" : "No") << std::endl; }
 #define DUMP(x) 0
 #endif
 
-using ModInt = modint998244353;
-using VecModInt = vector<ModInt>;
+using mint = modint998244353;
+using VecMint = vector<mint>;
 
 int main() {}
