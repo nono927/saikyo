@@ -1,5 +1,6 @@
 CXX=g++-13
-CFLAGS=-g -std=c++20 -DLOCAL -Wall -O2 -I../../ac-library -D_GLIBGCC_DEBUG
+CXXFLAGS=-g -std=c++20 -DLOCAL -Wall -O2 -I../../ac-library -I. -D_GLIBGCC_DEBUG
 
-%: %.cpp
-	$(CXX) $(CFLAGS) -o $@ $<
+VPATH=src
+build/%: %.cpp
+	$(LINK.cpp) $^ $(LOADLIBES) $(LDLIBS) -o $@
